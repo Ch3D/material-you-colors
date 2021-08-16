@@ -8,7 +8,8 @@ https://play.google.com/store/apps/details?id=com.ch3d.material.color
 
 
 ### Screenshots
-<img src="https://user-images.githubusercontent.com/4177834/129535018-29c4e1ce-b66d-424c-8357-a9289b7686c9.png" width="240">
+<img src="https://user-images.githubusercontent.com/4177834/129535018-29c4e1ce-b66d-424c-8357-a9289b7686c9.png" width="240">  <img src="https://user-images.githubusercontent.com/4177834/129566577-505bb9b4-e956-4976-8a86-77d23554b10d.png" width="240">
+
 
 ## License
 ```
