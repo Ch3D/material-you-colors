@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">@color/accent_1_400</color>
-    <color name="purple_500">@color/accent_1_600</color>
-    <color name="purple_700">@color/accent_1_800</color>
-    <color name="teal_200">@color/accent_2_500</color>
-    <color name="teal_700">@color/accent_2_700</color>
+    <color name="primaryColor">@color/accent_1_400</color>
+    <color name="primaryVariantColor">@color/accent_1_800</color>
+    <color name="secondaryColor">@color/accent_2_500</color>
+    <color name="secondaryVariantColor">@color/accent_2_700</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
