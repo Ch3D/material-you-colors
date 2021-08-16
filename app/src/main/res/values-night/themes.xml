@@ -8,7 +8,7 @@
         <item name="colorPrimaryVariant">@color/primaryVariantColor</item>
         <item name="colorOnPrimary">@color/secondaryVariantColor</item>
 
-        <item name="colorSurface">@color/accent_1_700</item>
+        <item name="colorSurface">@color/accent_1_800</item>
 
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/secondaryColor</item>
@@ -16,7 +16,7 @@
         <item name="colorOnSecondary">@color/secondaryVariantColor</item>
 
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">@color/accent_1_800</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/accent_1_900</item>
 
     </style>
 </resources>
