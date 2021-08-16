@@ -12,7 +12,7 @@ https://play.google.com/store/apps/details?id=com.ch3d.material.color
 
 ## License
 ```
-Copyright 2017 Dmitry Chertenko
+Copyright 2021 Dmitry Chertenko
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
