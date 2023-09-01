@@ -5,6 +5,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.gestures.rememberScrollableState
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -13,6 +16,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -47,9 +52,11 @@ class MainActivity2 : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = MaterialTheme.colorScheme.primary
                 ) {
-                    Column {
+                    Column(
+                        modifier = Modifier.verticalScroll(rememberScrollState())
+                    ) {
                         ColorGrid(generateColorTable("Accent 1", "accent_1_"))
                         ColorGrid(generateColorTable("Accent 2", "accent_2_"))
                         ColorGrid(generateColorTable("Accent 3", "accent_3_"))
@@ -74,7 +81,7 @@ class MainActivity2 : ComponentActivity() {
                 RES_COLOR,
                 packageName
             )
-            val color = colorResource(R.color.accent_1_400)
+            val color = colorResource(colorResId)
             ColorData(it, color)
         })
 }
@@ -132,6 +139,7 @@ fun ColorGrid(
         Text(
             colorTable.title,
             fontWeight = FontWeight.Bold,
+            fontSize = MaterialTheme.typography.headlineSmall.fontSize,
             modifier = Modifier.padding(8.dp)
         )
         for (i in 0..<colors.size step stepSize) {
