@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.rememberScrollableState
@@ -16,6 +17,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
@@ -43,6 +45,7 @@ private val suffixList = listOf(
 
 private const val RES_COLOR = "color"
 
+@OptIn(ExperimentalFoundationApi::class, ExperimentalStdlibApi::class)
 class MainActivity2 : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,14 +57,33 @@ class MainActivity2 : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.primary
                 ) {
-                    Column(
-                        modifier = Modifier.verticalScroll(rememberScrollState())
-                    ) {
-                        ColorGrid(generateColorTable("Accent 1", "accent_1_"))
-                        ColorGrid(generateColorTable("Accent 2", "accent_2_"))
-                        ColorGrid(generateColorTable("Accent 3", "accent_3_"))
-                        ColorGrid(generateColorTable("Neutral 1", "neutral_1_"))
-                        ColorGrid(generateColorTable("Neutral 2", "neutral_2_"))
+                    val tables = listOf(
+                        generateColorTable("Accent 1", "accent_1_"),
+                        generateColorTable("Accent 2", "accent_2_"),
+                        generateColorTable("Accent 3", "accent_3_"),
+                        generateColorTable("Neutral 1", "neutral_1_"),
+                        generateColorTable("Neutral 2", "neutral_2_")
+                    )
+                    LazyColumn {
+                        tables.forEach { table ->
+                            stickyHeader {
+                                Text(
+                                    text = table.title,
+                                    color = table.colors.last().color,
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = MaterialTheme.typography.headlineSmall.fontSize,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                        .background(MaterialTheme.colorScheme.primary)
+                                        .padding(8.dp),
+                                    style = MaterialTheme.typography.headlineLarge,
+                                    textAlign = TextAlign.Start
+                                )
+                            }
+                            items(1) {
+                                ColorGrid(table)
+                            }
+                        }
                     }
                 }
             }
@@ -136,12 +158,6 @@ fun ColorGrid(
     val stepSize = 4
 
     Column {
-        Text(
-            colorTable.title,
-            fontWeight = FontWeight.Bold,
-            fontSize = MaterialTheme.typography.headlineSmall.fontSize,
-            modifier = Modifier.padding(8.dp)
-        )
         for (i in 0..<colors.size step stepSize) {
             val row = i / stepSize
             val startIndex = row * stepSize
