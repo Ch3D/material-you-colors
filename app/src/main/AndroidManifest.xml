@@ -7,6 +7,13 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialYouColors">
+
+        <activity
+            android:name=".MainActivity2"
+            android:exported="true"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/Theme.MaterialYouColors" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
